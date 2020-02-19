@@ -1,0 +1,8 @@
+<div class="container">
+<h1>Chain of blocks</h1>
+<p>Each card represents a block. Click in the block for more information!</p>
+
+<app-block-view 
+*ngFor="let block of blocks" [block]="block">
+</app-block-view>
+</div>
