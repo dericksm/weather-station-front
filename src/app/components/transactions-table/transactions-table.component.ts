@@ -13,6 +13,7 @@ export class TransactionsTableComponent implements OnInit {
   constructor(private blockchainService: BlockchainService) { }
 
   ngOnInit(): void {
+    console.log(this.transactions)
   }
 
 }

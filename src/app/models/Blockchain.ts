@@ -11,7 +11,7 @@ export class Blockchain {
     contructor() {
     }
     createGenesisBlock() {
-        return new Block(new Date().getTime(), "The Times Chancellor on Brink of Second Bailout", "0")
+        return new Block(new Date().getTime(),[], "0")
     }
 
     getLatestBlock() {

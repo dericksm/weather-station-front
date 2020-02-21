@@ -10,13 +10,19 @@ import { Block } from '../../models/Block';
 export class BlockchainViewerComponent implements OnInit {
 
   public blocks: Block[] = []
+  public selectblock: Block = null;
   constructor(
     private blockchainService: BlockchainService) {
       this.blocks = blockchainService.getBlocks()
+      this.selectblock = this.blocks[0]
   }
 
   ngOnInit(): void {
 
+  }
+
+  showTransactions(block) {
+    this.selectblock = block
   }
 
 }

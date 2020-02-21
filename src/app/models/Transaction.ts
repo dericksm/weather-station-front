@@ -8,13 +8,14 @@ export class Transaction {
     public fromAddress: string
     public toAddress: string
     public amount: number
-    public signature: string = ''
+    public signature: string = ''    
+    public timestamp: number
 
-
-    constructor(fromAddress: any, toAddress: string, amount: number) {
+    constructor(fromAddress?: any, toAddress?: string, amount?: number) {
         this.fromAddress = fromAddress
         this.toAddress = toAddress
         this.amount = amount
+        this.timestamp = new Date().getTime();
     }
 
     calculateTransactionHash(){
