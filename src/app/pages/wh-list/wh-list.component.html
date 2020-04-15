@@ -1,0 +1,59 @@
+<div class="container mt-5">
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Ultima Atualização</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Detalhes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Estação Metereológica 1</td>
+                <td>11/04/2019</td>
+                <td>
+                    <button type="button" class="btn btn-secondary" (click)="openModal()"><i class="fa fa-edit"></i></button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-secondary"><i class="fa fa-eye"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+<div class="modal fade" id="modalWSDetails">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar - Estação tal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="name-text" class="col-form-label">Nome:</label>
+                        <input type="text" class="form-control" id="name-text">
+                    </div>
+                    <div class="form-group">
+                        <label for="address-text" class="col-form-label">Endereço:</label>
+                        <textarea class="form-control" id="address-text"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="description-text" class="col-form-label">Descrição:</label>
+                        <textarea class="form-control" id="description-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary">Salvar alterações</button>
+            </div>
+        </div>
+    </div>
+</div>
