@@ -1,39 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { WeatherStation } from '../models/WeatherStation';
 
-@Injectable({
-  providedIn: 'root'
-})
+const API = `http://localhost:3333/weatherStation`
 
-const API = `http://localhost:3333`
-
+@Injectable({ providedIn: 'root' })
 export class WeatherStationService {
 
 
   constructor(private http: HttpClient) {
   }
 
-  public getById(id: string): Observable < User > {
-    return this.http.get<User>(API + "/" + id);
+  public getById(id: string): Observable < WeatherStation > {
+    return this.http.get<WeatherStation>(API + "/" + id);
   }
   
-    public getAll(): Observable < User[] > {
-    return this.http.get<User[]>(API);
+    public getAll(): Observable < WeatherStation[] > {
+    return this.http.get<WeatherStation[]>(API);
   }
   
-    public create<User>(user: User): Observable < User > {
-    const config = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
-    return this.http.post<User>(API + "/create", JSON.stringify(user), config)
+    public create<WeatherStation>(weatherStation: any): Observable < WeatherStation > {
+    return this.http.post<WeatherStation>(API, JSON.stringify(weatherStation))
   }
   
-    public update<User>(user: User): Observable < User > {
-    const config = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
-    return this.http.put<User>(API, JSON.stringify(user), config)
-  }
-  
-    public delete (id: string) {
-    return this.http.delete(API + "/" + id);
+    public update<WeatherStation>(weatherStation: any): Observable < WeatherStation > {
+    return this.http.put<WeatherStation>(API + "/" + weatherStation.id, JSON.stringify(weatherStation))
   }
   
 }

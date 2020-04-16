@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WhDetailsComponent } from './pages/wh-details/wh-details';
 import { WhListComponent } from './pages/wh-list/wh.list';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { WhListComponent } from './pages/wh-list/wh.list';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    DataTablesModule
+    DataTablesModule,
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
