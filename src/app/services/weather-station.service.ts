@@ -8,7 +8,6 @@ const API = `http://localhost:3333/weatherStation`
 @Injectable({ providedIn: 'root' })
 export class WeatherStationService {
 
-
   constructor(private http: HttpClient) {
   }
 
@@ -25,7 +24,8 @@ export class WeatherStationService {
   }
   
     public update<WeatherStation>(weatherStation: any): Observable < WeatherStation > {
-    return this.http.put<WeatherStation>(API + "/" + weatherStation.id, JSON.stringify(weatherStation))
+    const config = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
+    return this.http.put<WeatherStation>(API + "/update/" + weatherStation.id, JSON.stringify(weatherStation), config)
   }
   
 }

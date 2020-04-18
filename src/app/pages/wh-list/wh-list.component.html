@@ -12,14 +12,16 @@
         </thead>
         <tbody>
             <tr *ngFor="let ws of weatherStations">
+                <td>{{!isNullOrUndefined(ws.name) ? ws.name : 'Estação Metereológica ' + ws.id}}</td>
                 <td>{{!isNullOrUndefined(ws.description) ? ws.description : 'Não informado'}}</td>
-                <td>{{ws.address}}</td>
+                <td>{{!isNullOrUndefined(ws.address) ? ws.address : 'Não informado'}}</td>
                 <td>{{formatDate(ws)}}</td>
                 <td>
-                    <button type="button" class="btn btn-secondary" (click)="openModal(ws)"><i class="fa fa-edit"></i></button>
+                    <button type="button" class="btn btn-secondary" (click)="openModal(ws)"><i
+                            class="fa fa-edit"></i></button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-secondary"><i class="fa fa-eye"></i></button>
+                    <button type="button" class="btn btn-secondary" [routerLink]="['../../wh/details', ws.id]" [queryParams]="{id: ws.id, name: ws.name}"><i class="fa fa-eye"></i></button>
                 </td>
             </tr>
         </tbody>
@@ -28,35 +30,35 @@
 
 
 
-<div class="modal fade" id="modalWSDetails" *ngIf="!isNullOrUndefined(whModal)">
+<div class="modal fade" id="modalWSDetails">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar - {{whModal.description != null || whModal.description != undefined ? whModal.description : 'Estação Metereológica' + whModal.id}}
+                <h5 class="modal-title" id="exampleModalLabel">Editar
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="form-group">
+                <form [formGroup]="formGroup">
+                    <div class="form-group" [class.has-error]="formGroup.get('name').hasError('required') && formGroup.get('name').touched">
                         <label for="name-text" class="col-form-label">Nome:</label>
-                        <input type="text" class="form-control" id="name-text">
+                        <input formControlName="name" type="text" class="form-control" id="name-text">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" [class.has-error]="formGroup.get('address').hasError('required') && formGroup.get('address').touched">
                         <label for="address-text" class="col-form-label">Endereço:</label>
-                        <textarea class="form-control" id="address-text"></textarea>
+                        <textarea formControlName="address" class="form-control" id="address-text"></textarea>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" [class.has-error]="formGroup.get('description').hasError('required') && formGroup.get('description').touched">
                         <label for="description-text" class="col-form-label">Descrição:</label>
-                        <textarea class="form-control" id="description-text"></textarea>
+                        <textarea formControlName="description" class="form-control" id="description-text"></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary">Salvar alterações</button>
+                <button type="button" class="btn btn-primary" (click)="submit()">Salvar alterações</button>
             </div>
         </div>
     </div>

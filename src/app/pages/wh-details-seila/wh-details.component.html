@@ -1,0 +1,20 @@
+<div class="container col-8 mt-5">
+    <h3>{{wsName}}</h3>
+
+    <div class="container">
+        <dx-data-grid #dataGrid id="gridContainer" [dataSource]="readings" [showBorders]="true" (onOptionChanged)="handleOnOptionChanged($event)" style="text-align: center !important;">
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+            <dxo-paging [pageSize]="15"></dxo-paging>
+            <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[15]" [showInfo]="true"></dxo-pager>
+            <dxi-column [allowFiltering]="true" caption="Data" [calculateCellValue]="formatDate" [filterOperations]="['between', '=']"></dxi-column>
+            <dxi-column [allowFiltering]="true" caption="Horas" [calculateCellValue]="formatTime"></dxi-column>
+            <dxi-column [allowFiltering]="true" caption="Temperatura" dataField="temperature"></dxi-column>
+            <dxi-column [allowFiltering]="true" caption="Umidade" dataField="humidity"></dxi-column>
+            <dxi-column [allowFiltering]="true" caption="Pulsos de chuva" dataField="rainning_pulses"></dxi-column>
+            <dxi-column [allowFiltering]="true" caption="Tempo sem chuva" dataField="time_without_rainning"></dxi-column>
+            <dxi-column [allowFiltering]="true" caption="Direção do vento" dataField="wind_direction"></dxi-column>
+            <dxi-column [allowFiltering]="true" caption="Velocidade" dataField="speed"></dxi-column>
+        </dx-data-grid>
+    </div>
+
+</div>

@@ -1,6 +1,21 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "globalize": [
+        "node_modules/globalize/dist/globalize"
+      ],
+      "globalize/*": [
+        "node_modules/globalize/dist/globalize/*"
+      ],
+      "cldr": [
+        "node_modules/cldrjs/dist/cldr"
+      ],
+      "cldr/*": [
+        "node_modules/cldrjs/dist/cldr/*"
+      ]
+    },
+    "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
@@ -11,7 +26,8 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "incremental": true,
+    "incremental": true,    
+    "resolveJsonModule": true,
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -23,5 +39,6 @@
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
-  }
+  },
+  
 }
