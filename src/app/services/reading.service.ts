@@ -15,6 +15,10 @@ export class ReadingService {
     console.log(page)
     return this.http.get<Reading>(API + "/" + id + "?page=" + page);
   }
+
+  public getByDate(id: string, startDate, endDate): Observable < Reading > {
+    return this.http.get<Reading>(API + "/date/" + id + "?startDate=" + startDate + "&endDate=" + endDate);
+  }
   
   
 }

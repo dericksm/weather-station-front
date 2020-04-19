@@ -2,13 +2,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { DataTablesModule } from 'angular-datatables';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WhListComponent } from './pages/wh-list/wh.list';
 import { HttpClientModule } from '@angular/common/http';
-import { WhDetailsNovoComponent } from './pages/wh-details-seila/wh-details';
+import { WhDetailsComponent } from './pages/wh-details/wh-details';
 import { DxDataGridModule } from 'devextreme-angular';
+import { DxDateBoxModule } from "devextreme-angular";
+import { DxButtonModule } from "devextreme-angular";
 
 
 
@@ -16,7 +17,7 @@ import { DxDataGridModule } from 'devextreme-angular';
   declarations: [
     AppComponent,
     WhListComponent,
-    WhDetailsNovoComponent
+    WhDetailsComponent
   ],
   imports: [
     NgbModule,
@@ -24,9 +25,10 @@ import { DxDataGridModule } from 'devextreme-angular';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    DataTablesModule,
     HttpClientModule,
-    DxDataGridModule
+    DxDataGridModule,
+    DxDateBoxModule,
+    DxButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

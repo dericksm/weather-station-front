@@ -9,8 +9,6 @@ import ptMessages from "devextreme/localization/messages/pt.json";
 
 import supplemental from "devextreme-cldr-data/supplemental.json";
 import ptCldrData from "devextreme-cldr-data/pt.json";
-
-import { loadMessages, locale } from 'devextreme/localization';
 import Globalize from 'globalize'
 
 @Component({
@@ -21,9 +19,9 @@ import Globalize from 'globalize'
 
 export class AppComponent {
   locale: string;
-
+  title = 'weather-station';
   constructor() {
-    Globalize.load(supplemental, ptCldrData);
+  Globalize.load(supplemental, ptCldrData);
   Globalize.loadMessages(ptMessages);
   Globalize.locale(navigator.language);
   }

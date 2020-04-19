@@ -13,6 +13,9 @@
       ],
       "cldr/*": [
         "node_modules/cldrjs/dist/cldr/*"
+      ],
+      "jszip": [
+        "node_modules/jszip/dist/jszip.min.js"
       ]
     },
     "allowSyntheticDefaultImports": true,

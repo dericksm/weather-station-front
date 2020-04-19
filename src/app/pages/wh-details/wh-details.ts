@@ -12,15 +12,19 @@ import { ReadingService } from '../../services/reading.service';
   styleUrls: ['./wh-details.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class WhDetailsNovoComponent implements OnInit, OnDestroy {
+export class WhDetailsComponent implements OnInit, OnDestroy {
 
 
   @ViewChild('dataGrid') dataGrid: DxDataGridComponent;
 
+  public oldReadings
 
   public pages = []
   public id
   public wsName
+
+  public startDate: Date = new Date();
+  public endDate: Date = new Date();
 
   public readings: Reading[] = []
   public readingsSubscription: Subscription
@@ -54,10 +58,9 @@ export class WhDetailsNovoComponent implements OnInit, OnDestroy {
   handleOnOptionChanged(event) {
     if (!isNullOrUndefined(this.dataGrid) && !isNullOrUndefined(event) && event.fullName === "paging.pageIndex") {
       let page = event.value
-      if(!this.pages.includes(page)){
+      if (!this.pages.includes(page)) {
         this.readingService.getById(this.id, page).subscribe((readings: any) => {
           this.readings.push(...readings.readings)
-          console.log(readings)
           this.dataGrid.instance.beginUpdate()
           this.dataGrid.instance.refresh()
           this.dataGrid.instance.endUpdate()
@@ -65,7 +68,24 @@ export class WhDetailsNovoComponent implements OnInit, OnDestroy {
         })
       }
     }
-
   }
+
+  handleButtonOnClick(event) {
+    this.readingsSubscription = this.readingService.getByDate(this.id, this.startDate, this.endDate).subscribe((readings: any) => {
+      this.oldReadings = [...this.readings]
+      this.readings = [...readings]
+      this.dataGrid.instance.beginUpdate()
+      this.dataGrid.instance.refresh()
+      this.dataGrid.instance.endUpdate()
+    })
+  }
+
+  handleClearButtonOnClick(event) {    
+      this.readings = [...this.oldReadings]
+      this.dataGrid.instance.beginUpdate()
+      this.dataGrid.instance.refresh()
+      this.dataGrid.instance.endUpdate()
+  }
+
 
 }

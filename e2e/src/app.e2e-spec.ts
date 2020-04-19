@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('blockchainAngular app is running!');
+    expect(page.getTitleText()).toEqual('weatherStation app is running!');
   });
 
   afterEach(async () => {

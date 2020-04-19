@@ -1,7 +1,24 @@
 <div class="container col-8 mt-5">
     <h3>{{wsName}}</h3>
 
-    <div class="container">
+    <div class="row mb-2">
+        <div class="btn-group">
+
+            <dx-date-box [(value)]="startDate" class="mr-1">
+            </dx-date-box>
+            <dx-date-box [(value)]="endDate" class="mr-1">
+            </dx-date-box>
+
+            <dx-button stylingMode="contained" text="Pesquisar" type="default" (onClick)="handleButtonOnClick($event)" class="mr-1">
+            </dx-button>
+
+            <dx-button stylingMode="contained" text="Limpar" type="normal" (onClick)="handleClearButtonOnClick($event)">
+            </dx-button>
+
+        </div>
+    </div>
+    <div class="row">
+
         <dx-data-grid #dataGrid id="gridContainer" [dataSource]="readings" [showBorders]="true" (onOptionChanged)="handleOnOptionChanged($event)" style="text-align: center !important;">
             <dxo-filter-row [visible]="true"></dxo-filter-row>
             <dxo-paging [pageSize]="15"></dxo-paging>
@@ -11,7 +28,8 @@
             <dxi-column [allowFiltering]="true" caption="Temperatura" dataField="temperature"></dxi-column>
             <dxi-column [allowFiltering]="true" caption="Umidade" dataField="humidity"></dxi-column>
             <dxi-column [allowFiltering]="true" caption="Pulsos de chuva" dataField="rainning_pulses"></dxi-column>
-            <dxi-column [allowFiltering]="true" caption="Tempo sem chuva" dataField="time_without_rainning"></dxi-column>
+            <dxi-column [allowFiltering]="true" caption="Tempo sem chuva" dataField="time_without_rainning">
+            </dxi-column>
             <dxi-column [allowFiltering]="true" caption="Direção do vento" dataField="wind_direction"></dxi-column>
             <dxi-column [allowFiltering]="true" caption="Velocidade" dataField="speed"></dxi-column>
         </dx-data-grid>
