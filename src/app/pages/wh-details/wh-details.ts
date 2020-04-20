@@ -48,11 +48,15 @@ export class WhDetailsComponent implements OnInit, OnDestroy {
   }
 
   formatDate(reading: Reading) {
-    return new Date(`${reading.date_month}-${reading.date_day}-${reading.date_year}`)
+    if (isNullOrUndefined(reading.date_month) || isNullOrUndefined(reading.date_day) || isNullOrUndefined(reading.date_year)) {
+      return 'Data inválida'
+    } else return new Date(`${reading.date_month}-${reading.date_day}-${reading.date_year}`)
   }
 
   formatTime(reading: Reading) {
-    return `${reading.date_hours}:${reading.date_minutes}`
+    if (isNullOrUndefined(reading.date_hours) || isNullOrUndefined(reading.date_minutes)) {
+      return 'Horário inválido'
+    } else return `${reading.date_hours}:${reading.date_minutes}`
   }
 
   handleOnOptionChanged(event) {

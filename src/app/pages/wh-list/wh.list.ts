@@ -46,7 +46,11 @@ export class WhListComponent implements OnInit, OnDestroy {
   }
 
   formatDate(wh: WeatherStation) {
-    return `${wh.date_day}/${wh.date_month}/${wh.date_year} - ${wh.date_hours}:${wh.date_minutes}`
+    if(isNullOrUndefined(wh.date_day) && isNullOrUndefined(wh.date_month) && isNullOrUndefined(wh.date_year) && isNullOrUndefined(wh.date_minutes) && isNullOrUndefined(wh.date_hours)) {
+      return `${wh.date_day}/${wh.date_month}/${wh.date_year} - ${wh.date_hours}:${wh.date_minutes}`
+    } else {
+      return 'Data inválida'
+    }
   }
 
   isNullOrUndefined(data) {
